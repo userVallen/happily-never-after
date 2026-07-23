@@ -1,4 +1,6 @@
 export const PRESET_AMOUNTS = {
-    KRW: [10000, 30000, 50000, 100000],
-    IDR: [100000, 300000, 500000, 1000000],
-  } as const;
+  KRW: [10000, 30000, 50000, 100000],
+  IDR: [100000, 300000, 500000, 1000000],
+} as const;
+
+export const CONVERSION_RATE = 12.5;

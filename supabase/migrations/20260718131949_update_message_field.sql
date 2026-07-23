@@ -1,0 +1,2 @@
+ALTER TABLE donations
+ALTER COLUMN message DROP NOT NULL;

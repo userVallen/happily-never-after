@@ -1,6 +1,11 @@
-import DonationForm from "@/components/donation-form";
+import DonationCard from '@/components/donation-card';
+import { getCampaignService } from '@/lib/services/campaign/get';
+import { getTotalDonationsService } from '@/lib/services/donation/get';
 
-export default function Home() {
+export default async function Home() {
+  const campaign = await getCampaignService();
+  const totalDonations = await getTotalDonationsService(campaign.id);
+
   return (
     <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black wrap-anywhere">
       <main className="flex flex-1 w-full flex-col items-center gap-10 p-8 bg-white dark:bg-black sm:gap-30">
@@ -47,7 +52,7 @@ export default function Home() {
           come to life. Food & coffee to support the team&apos;s hard work. PLS
         </p>
 
-        <DonationForm />
+        <DonationCard campaign={campaign} totalDonations={totalDonations[0]} />
 
         <p>ㅠ PLS HELP ME GRADUATE ㅠ</p>
       </main>
