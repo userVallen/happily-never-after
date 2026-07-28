@@ -1,16 +1,16 @@
 import type { Metadata } from 'next';
-import { Geist, Geist_Mono } from 'next/font/google';
+import localFont from 'next/font/local';
 import { Toaster } from '@/components/ui/sonner';
 import './globals.css';
 
-const geistSans = Geist({
-  variable: '--font-geist-sans',
-  subsets: ['latin'],
+const tnrCondensed = localFont({
+  variable: '--font-sans',
+  src: './fonts/Times-New-Roman-MT-Condensed.woff2',
 });
 
-const geistMono = Geist_Mono({
-  variable: '--font-geist-mono',
-  subsets: ['latin'],
+const anaktoria = localFont({
+  variable: '--font-heading',
+  src: './fonts/Anaktoria.woff2',
 });
 
 export const metadata: Metadata = {
@@ -26,7 +26,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${tnrCondensed.variable} ${anaktoria.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
         {children}

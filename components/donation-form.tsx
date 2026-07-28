@@ -82,14 +82,14 @@ export default function DonationForm({
 
   return (
     <Card>
-      <CardContent className="flex flex-col items-center gap-5">
+      <CardContent className="flex flex-col items-center gap-5 px-0">
         <form
           className="w-full"
           id="donation-form"
           onSubmit={form.handleSubmit(onSubmit)}
         >
-          <div className="flex flex-col gap-6 md:gap-18 sm:flex-row sm:gap-10">
-            <div className="flex flex-col flex-1">
+          <div className="grid grid-cols-1 gap-6 md:gap-18 sm:grid-cols-2 sm:gap-10">
+            <div className="flex flex-col flex-1 gap-3">
               <Controller
                 name="name"
                 control={form.control}
@@ -105,13 +105,13 @@ export default function DonationForm({
                 )}
               />
 
-              <div className="flex flex-col relative min-w-3xs my-1">
+              <div className="flex flex-col relative my-1">
                 <Controller
                   name="amount"
                   control={form.control}
                   render={({ field, fieldState }) => (
-                    <div className="">
-                      <div className="flex my-5 gap-x-5">
+                    <div className="flex flex-col gap-3">
+                      <div className="flex my-2 gap-x-5">
                         <Field data-invalid={fieldState.invalid}>
                           <div className="flex gap-5 justify-between">
                             <FieldLabel
@@ -142,11 +142,12 @@ export default function DonationForm({
                       </div>
 
                       <div className="flex flex-col gap-4">
-                        <div className="grid grid-cols-2 gap-4">
+                        <div className="grid grid-cols-2 gap-4 text-primary-foreground w-auto">
                           {PRESET_AMOUNTS[currency].map((option) => {
                             return (
                               <Button
                                 type="button"
+                                className="text-primary-foreground"
                                 key={option}
                                 onClick={() => field.onChange(option)}
                               >
@@ -160,9 +161,7 @@ export default function DonationForm({
                   )}
                 />
 
-                <div className="flex items-center absolute mt-5 pr-1 right-0 space-x-2">
-                  <div className="flex flex-row items-center text-nowrap"></div>
-
+                <div className="flex items-center absolute mt-2 pr-1 right-0 space-x-2">
                   <FieldLabel htmlFor="currency">KRW</FieldLabel>
 
                   <Switch
@@ -178,38 +177,35 @@ export default function DonationForm({
               </div>
             </div>
 
-            <div className="flex flex-col flex-1 gap-8">
-              <Card>
-                <CardContent>
-                  <p>Toss Acc: XXXXXXXX</p>
-                  <p>Jenius Acc: XXXXXXXXX</p>
-                </CardContent>
-              </Card>
+            <div className="flex flex-col flex-1 gap-8 text-base">
+              <div>
+                <p className="pl-1">Toss Acc: XXXXXXXX</p>
+                <p className="pl-1">Jenius Acc: XXXXXXXXX</p>
+              </div>
 
-              <Card className="flex flex-col">
-                <CardContent>
-                  <Controller
-                    name="message"
-                    control={form.control}
-                    render={({ field, fieldState }) => (
-                      <Field data-invalid={fieldState.invalid}>
-                        <FieldLabel htmlFor={field.name}>
-                          Leave a Message of Support
-                        </FieldLabel>
-                        <Textarea
-                          {...field}
-                          id="message"
-                          placeholder="Be kind!"
-                        />
+              <div className="h-full">
+                <Controller
+                  name="message"
+                  control={form.control}
+                  render={({ field, fieldState }) => (
+                    <Field className="h-full" data-invalid={fieldState.invalid}>
+                      <FieldLabel htmlFor={field.name}>
+                        Leave a Message of Support
+                      </FieldLabel>
+                      <Textarea
+                        {...field}
+                        className="h-full"
+                        id="message"
+                        placeholder="Be kind!"
+                      />
 
-                        {fieldState.invalid && (
-                          <FieldError errors={[fieldState.error]} />
-                        )}
-                      </Field>
-                    )}
-                  />
-                </CardContent>
-              </Card>
+                      {fieldState.invalid && (
+                        <FieldError errors={[fieldState.error]} />
+                      )}
+                    </Field>
+                  )}
+                />
+              </div>
             </div>
           </div>
         </form>

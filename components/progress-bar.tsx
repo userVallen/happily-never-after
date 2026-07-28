@@ -26,11 +26,11 @@ export default function ProgressBar({
 
   return (
     <div>
-      <p>
-        {currency} {formatAmount(displayedDonationAmount)}/
+      <p className="text-lg">
+        {currency} {formatAmount(displayedDonationAmount)} /{' '}
         {formatAmount(displayedGoalAmount)}
       </p>
-      <Progress value={progress}></Progress>
+      <Progress className="h-5 my-1" value={progress}></Progress>
     </div>
   );
 }

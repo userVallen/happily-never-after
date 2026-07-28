@@ -19,8 +19,8 @@ export default function DonationCard({
   const [currency, setCurrency] = useState<'KRW' | 'IDR'>('KRW');
 
   return (
-    <Card className="w-[clamp(400px,80vw,800px)] py-8 px-5">
-      <CardContent className="flex flex-col gap-8">
+    <Card className="w-[clamp(300px,80vw,800px)] p-8">
+      <CardContent className="flex flex-col gap-8 px-0">
         <ProgressBar
           currency={currency}
           goalAmount={campaign.goal_amount}
