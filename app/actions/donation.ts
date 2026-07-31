@@ -3,18 +3,17 @@
 import { flattenError } from 'zod';
 import { revalidatePath } from 'next/cache';
 
-import {
-  CreateDonationInput,
-  createDonationSchema,
-} from '@/lib/validation/donation';
+import { DonationSchema, donationSchema } from '@/lib/validation/donation';
 import { createDonationService } from '@/lib/services/donation/create';
 
 import { ActionResult } from '@/app/actions/types';
+import { approveDonationService } from '@/lib/services/donation/approve';
+import { rejectDonationService } from '@/lib/services/donation/reject';
 
 export async function createDonation(
-  values: CreateDonationInput
+  values: DonationSchema
 ): Promise<ActionResult> {
-  const result = createDonationSchema.safeParse(values);
+  const result = donationSchema.safeParse(values);
 
   if (!result.success) {
     // Validation error
@@ -39,6 +38,44 @@ export async function createDonation(
   }
 
   revalidatePath('/');
+
+  return { success: true };
+}
+
+export async function approveDonation(
+  donationId: string
+): Promise<ActionResult> {
+  try {
+    await approveDonationService(donationId);
+  } catch (error) {
+    console.error(error);
+
+    return {
+      success: false,
+      message: 'Something went wrong',
+    };
+  }
+
+  revalidatePath('/admin');
+
+  return { success: true };
+}
+
+export async function rejectDonation(
+  donationId: string
+): Promise<ActionResult> {
+  try {
+    await rejectDonationService(donationId);
+  } catch (error) {
+    console.error(error);
+
+    return {
+      success: false,
+      message: 'Something went wrong.',
+    };
+  }
+
+  revalidatePath('/admin');
 
   return { success: true };
 }

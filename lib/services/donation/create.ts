@@ -1,7 +1,7 @@
-import { CreateDonationInput } from '@/lib/validation/donation';
+import { DonationSchema } from '@/lib/validation/donation';
 import { createClient } from '@/lib/supabase/server';
 
-export async function createDonationService(input: CreateDonationInput) {
+export async function createDonationService(input: DonationSchema) {
   const supabase = await createClient();
 
   const { error } = await supabase.from('donations').insert({

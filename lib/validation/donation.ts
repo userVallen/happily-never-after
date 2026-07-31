@@ -1,6 +1,6 @@
 import { z } from 'zod';
 
-export const createDonationSchema = z.object({
+export const donationSchema = z.object({
   campaignId: z.uuid(),
   name: z.string().trim().min(1).max(100),
   amount: z.coerce.number().int().positive(),
@@ -8,4 +8,4 @@ export const createDonationSchema = z.object({
   currency: z.enum(['KRW', 'IDR']),
 });
 
-export type CreateDonationInput = z.infer<typeof createDonationSchema>;
+export type DonationSchema = z.infer<typeof donationSchema>;

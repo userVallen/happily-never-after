@@ -14,10 +14,7 @@ import { Alert } from '@/components/ui/alert';
 
 import { createDonation } from '@/app/actions/donation';
 
-import {
-  CreateDonationInput,
-  createDonationSchema,
-} from '@/lib/validation/donation';
+import { DonationSchema, donationSchema } from '@/lib/validation/donation';
 import { Campaign } from '@/lib/supabase/types';
 import { formatAmount } from '@/lib/utils';
 import { PRESET_AMOUNTS } from '@/lib/constants';
@@ -33,8 +30,8 @@ export default function DonationForm({
   currency,
   onCurrencyChange,
 }: DonationFormProps) {
-  const form = useForm<CreateDonationInput>({
-    resolver: standardSchemaResolver(createDonationSchema),
+  const form = useForm<DonationSchema>({
+    resolver: standardSchemaResolver(donationSchema),
     defaultValues: {
       campaignId: campaign.id,
       name: '',
@@ -44,7 +41,7 @@ export default function DonationForm({
     },
   });
 
-  const onSubmit = async (values: CreateDonationInput) => {
+  const onSubmit = async (values: DonationSchema) => {
     form.clearErrors('root.serverError');
 
     const result = await createDonation({
@@ -66,7 +63,7 @@ export default function DonationForm({
       if (result.fieldErrors) {
         for (const [field, errors] of Object.entries(result.fieldErrors)) {
           if (!errors?.length) continue;
-          form.setError(field as keyof CreateDonationInput, {
+          form.setError(field as keyof DonationSchema, {
             type: 'server',
             message: errors[0],
           });
@@ -96,7 +93,12 @@ export default function DonationForm({
                 render={({ field, fieldState }) => (
                   <Field data-invalid={fieldState.invalid}>
                     <FieldLabel htmlFor={field.name}>Name</FieldLabel>
-                    <Input {...field} id={field.name} placeholder="Your name" />
+                    <Input
+                      {...field}
+                      id={field.name}
+                      placeholder="Your name"
+                      autoComplete="off"
+                    />
 
                     {fieldState.invalid && (
                       <FieldError errors={[fieldState.error]} />
@@ -134,6 +136,7 @@ export default function DonationForm({
 
                               field.onChange(raw === '' ? 0 : Number(raw));
                             }}
+                            autoComplete="off"
                           />
                           {fieldState.invalid && (
                             <FieldError errors={[fieldState.error]} />
@@ -197,6 +200,7 @@ export default function DonationForm({
                         className="h-full"
                         id="message"
                         placeholder="Be kind!"
+                        autoComplete="off"
                       />
 
                       {fieldState.invalid && (

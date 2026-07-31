@@ -11,3 +11,16 @@ export async function getTotalDonationsService(campaignId: string) {
 
   return data;
 }
+
+export async function getPendingDonationsService(campaignId: string) {
+  const supabase = await createClient();
+
+  const { data, error } = await supabase
+    .from('donations')
+    .select()
+    .match({ campaign_id: campaignId, status: 'pending' });
+
+  if (error) throw error;
+
+  return data;
+}

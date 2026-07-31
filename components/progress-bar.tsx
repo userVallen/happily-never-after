@@ -26,7 +26,7 @@ export default function ProgressBar({
 
   return (
     <div>
-      <p className="text-lg">
+      <p className="text-xl font-bold">
         {currency} {formatAmount(displayedDonationAmount)} /{' '}
         {formatAmount(displayedGoalAmount)}
       </p>
