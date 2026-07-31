@@ -2,12 +2,16 @@ import { redirect } from 'next/navigation';
 
 import { getCampaignService } from '@/lib/services/campaign/get';
 import { getTotalDonationsService } from '@/lib/services/donation/get';
-import { getPendingDonationsService } from '@/lib/services/donation/get';
+import {
+  getPendingDonationsService,
+  getApprovedDonationsService,
+} from '@/lib/services/donation/get';
 import { authenticateAdmin } from '@/lib/auth/authenticate-admin';
 
 import { Card, CardContent } from '@/components/ui/card';
 import ProgressBar from '@/components/progress-bar';
 import PendingDonationsTable from '@/components/pending-donations-table';
+import ApprovedDonationsTable from '@/components/approved-donations-table';
 
 export default async function AdminPage() {
   const auth = await authenticateAdmin();
@@ -19,9 +23,10 @@ export default async function AdminPage() {
   const campaign = await getCampaignService();
   const totalDonations = await getTotalDonationsService(campaign.id);
   const pendingDonations = await getPendingDonationsService(campaign.id);
+  const approvedDonations = await getApprovedDonationsService(campaign.id);
 
   return (
-    <main className="flex flex-col gap-12 p-8">
+    <main className="flex flex-col gap-15 p-8">
       <Card>
         <CardContent>
           <ProgressBar
@@ -33,6 +38,7 @@ export default async function AdminPage() {
       </Card>
 
       <PendingDonationsTable pendingDonations={pendingDonations} />
+      <ApprovedDonationsTable approvedDonations={approvedDonations} />
     </main>
   );
 }

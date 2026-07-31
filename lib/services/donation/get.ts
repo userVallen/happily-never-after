@@ -24,3 +24,16 @@ export async function getPendingDonationsService(campaignId: string) {
 
   return data;
 }
+
+export async function getApprovedDonationsService(campaignId: string) {
+  const supabase = await createClient();
+
+  const { data, error } = await supabase
+    .from('donations')
+    .select()
+    .match({ campaign_id: campaignId, status: 'approved' });
+
+  if (error) throw error;
+
+  return data;
+}
