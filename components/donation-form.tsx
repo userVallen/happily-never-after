@@ -11,6 +11,16 @@ import { Field, FieldLabel, FieldError } from '@/components/ui/field';
 import { Input } from '@/components/ui/input';
 import { Switch } from '@/components/ui/switch';
 import { Alert } from '@/components/ui/alert';
+import {
+  AlertDialog,
+  AlertDialogTrigger,
+  AlertDialogContent,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogDescription,
+  AlertDialogCancel,
+  AlertDialogAction,
+} from '@/components/ui/alert-dialog';
 
 import { createDonation } from '@/app/actions/donation';
 
@@ -78,8 +88,8 @@ export default function DonationForm({
   };
 
   return (
-    <Card>
-      <CardContent className="flex flex-col items-center gap-5 px-0">
+    <Card className="pb-0">
+      <CardContent className="flex flex-col items-center gap-5 p-1">
         <form
           className="w-full"
           id="donation-form"
@@ -214,9 +224,46 @@ export default function DonationForm({
           </div>
         </form>
 
-        <Button className="w-3/4" type="submit" form="donation-form">
-          Submit Donation
-        </Button>
+        <AlertDialog>
+          <AlertDialogTrigger asChild>
+            <Button className="w-3/4" type="submit">
+              Submit Donation
+            </Button>
+          </AlertDialogTrigger>
+
+          <AlertDialogContent className="bg-popover">
+            <AlertDialogHeader>
+              <AlertDialogTitle className="text-foreground text-xl font-bold">
+                Heads up!
+              </AlertDialogTitle>
+
+              <AlertDialogDescription className="text-popover-foreground text-lg">
+                Payments are not done automatically. Please make sure you have
+                sent the right amount to one of the listed bank accounts before
+                submitting!
+                <br />
+                <br />
+                <span className="font-kor text-base">
+                  본 웹사이트에서는 결제가 자동으로 처리되지 않습니다. 기부를
+                  제출하시기 전에 안내된 계좌 중 하나로 정확한 금액을 직접
+                  송금해 주시기 바랍니다. 송금이 완료된 후 Confirm 버튼을 눌러
+                  기부를 제출해 주세요.
+                </span>
+              </AlertDialogDescription>
+            </AlertDialogHeader>
+
+            <div className="flex justify-end gap-2">
+              <AlertDialogCancel>Cancel</AlertDialogCancel>
+              <AlertDialogAction
+                onClick={form.handleSubmit(async (values) => {
+                  await onSubmit(values);
+                })}
+              >
+                Confirm
+              </AlertDialogAction>
+            </div>
+          </AlertDialogContent>
+        </AlertDialog>
 
         {form.formState.errors.root?.serverError && (
           <Alert variant="destructive">

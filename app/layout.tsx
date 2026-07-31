@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { Gowun_Dodum } from 'next/font/google';
 import localFont from 'next/font/local';
 import { Toaster } from '@/components/ui/sonner';
 import './globals.css';
@@ -11,6 +12,12 @@ const tnrCondensed = localFont({
 const anaktoria = localFont({
   variable: '--font-heading',
   src: './fonts/Anaktoria.woff2',
+});
+
+const gowunDodum = Gowun_Dodum({
+  weight: '400',
+  variable: '--font-kor',
+  display: 'swap',
 });
 
 export const metadata: Metadata = {
@@ -26,7 +33,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${tnrCondensed.variable} ${anaktoria.variable} h-full antialiased`}
+      className={`${tnrCondensed.variable} ${anaktoria.variable} ${gowunDodum.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
         {children}
