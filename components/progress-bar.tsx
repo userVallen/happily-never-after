@@ -30,7 +30,7 @@ export default function ProgressBar({
         {currency} {formatAmount(displayedDonationAmount)} /{' '}
         {formatAmount(displayedGoalAmount)}
       </p>
-      <Progress className="h-5 my-1" value={progress}></Progress>
+      <Progress className="h-5 my-1" value={progress} />
     </div>
   );
 }

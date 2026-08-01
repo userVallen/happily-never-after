@@ -1,5 +1,6 @@
 'use client';
 
+import { useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import { standardSchemaResolver } from '@hookform/resolvers/standard-schema';
 
@@ -40,6 +41,8 @@ export default function DonationForm({
   currency,
   onCurrencyChange,
 }: DonationFormProps) {
+  const [open, setOpen] = useState(false);
+
   const form = useForm<DonationSchema>({
     resolver: standardSchemaResolver(donationSchema),
     defaultValues: {
@@ -80,12 +83,19 @@ export default function DonationForm({
         }
       }
 
-      return;
+      return { success: false };
     }
 
     form.reset();
     toast.success('Thank you for your contribution!');
+    return { success: true };
   };
+
+  const handleConfirm = form.handleSubmit(async (values) => {
+    const result = await onSubmit(values);
+
+    if (result.success) setOpen(false);
+  });
 
   return (
     <Card className="pb-0">
@@ -224,7 +234,7 @@ export default function DonationForm({
           </div>
         </form>
 
-        <AlertDialog>
+        <AlertDialog open={open} onOpenChange={setOpen}>
           <AlertDialogTrigger asChild>
             <Button className="w-3/4" type="submit">
               Submit Donation
@@ -254,11 +264,7 @@ export default function DonationForm({
 
             <div className="flex justify-end gap-2">
               <AlertDialogCancel>Cancel</AlertDialogCancel>
-              <AlertDialogAction
-                onClick={form.handleSubmit(async (values) => {
-                  await onSubmit(values);
-                })}
-              >
+              <AlertDialogAction onClick={handleConfirm}>
                 Confirm
               </AlertDialogAction>
             </div>

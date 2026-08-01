@@ -30,7 +30,7 @@ export default function LoginPage() {
 
   return (
     <main className="flex flex-col items-center justify-center min-h-[100vh]">
-      <Card>
+      <Card className="w-xs">
         <CardHeader>
           <CardTitle className="font-bold text-xl">Admin Login</CardTitle>
         </CardHeader>

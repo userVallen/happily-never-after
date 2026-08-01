@@ -40,7 +40,7 @@ export default async function Home() {
           </div>
         </div>
 
-        <p className="text-fluid-lg text-center max-w-xl px-8">
+        <p className="text-fluid-md text-center max-w-xl px-8">
           Worked on the screenplay for 1 year. Team & I working hard to make it
           come to life. Food & coffee to support the team&apos;s hard work. PLS
         </p>
