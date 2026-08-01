@@ -32,7 +32,10 @@ export default function PendingDonationsTable({
               <p className="text-lg">{entry.message}</p>
               <p className="text-lg">{formatAmount(entry.amount)}</p>
               <p className="text-lg">{entry.currency}</p>
-              <DonationActions donationId={entry.id} />
+              <DonationActions
+                donationId={entry.id}
+                actions={['approve', 'reject']}
+              />
             </Fragment>
           );
         })}
@@ -50,7 +53,10 @@ export default function PendingDonationsTable({
                 <CardContent className="flex flex-col gap-1">
                   <p className="text-lg">{entry.message}</p>
                   <p className="text-lg">{`${entry.currency} ${formatAmount(entry.amount)}`}</p>
-                  <DonationActions donationId={entry.id} />
+                  <DonationActions
+                    donationId={entry.id}
+                    actions={['approve', 'reject']}
+                  />
                 </CardContent>
               </Card>
             </Fragment>

@@ -9,6 +9,7 @@ import { createDonationService } from '@/lib/services/donation/create';
 import { ActionResult } from '@/app/actions/types';
 import { approveDonationService } from '@/lib/services/donation/approve';
 import { rejectDonationService } from '@/lib/services/donation/reject';
+import { deleteDonationService } from '@/lib/services/donation/delete';
 
 export async function createDonation(
   values: DonationSchema
@@ -66,6 +67,25 @@ export async function rejectDonation(
 ): Promise<ActionResult> {
   try {
     await rejectDonationService(donationId);
+  } catch (error) {
+    console.error(error);
+
+    return {
+      success: false,
+      message: 'Something went wrong.',
+    };
+  }
+
+  revalidatePath('/admin');
+
+  return { success: true };
+}
+
+export async function deleteDonation(
+  donationId: string
+): Promise<ActionResult> {
+  try {
+    await deleteDonationService(donationId);
   } catch (error) {
     console.error(error);
 
