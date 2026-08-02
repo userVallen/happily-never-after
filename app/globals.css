@@ -157,3 +157,18 @@ main * {
     top: clamp(280px, 70vw, 600px);
   }
 }
+
+.loading-book {
+  animation: float 1.8s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-6px);
+  }
+}
