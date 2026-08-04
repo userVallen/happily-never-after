@@ -202,8 +202,11 @@ export default function DonationForm({
 
             <div className="flex flex-col flex-1 gap-8 text-base">
               <div>
-                <p className="pl-1">Toss Acc: XXXXXXXX</p>
-                <p className="pl-1">Jenius Acc: XXXXXXXXX</p>
+                <p className="pl-1">
+                  Toss <span className="font-kor">계죄번호</span>:
+                  1001-7704-5687
+                </p>
+                <p className="pl-1">Jenius Account: 90200372159</p>
               </div>
 
               <div className="h-full">

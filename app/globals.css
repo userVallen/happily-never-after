@@ -50,7 +50,7 @@
 
   --text-fluid-xs: clamp(0.6rem, 2.5vw, 1rem);
   --text-fluid-sm: clamp(0.6rem, 2.5vw, 1.3rem);
-  --text-fluid-md: clamp(0.75rem, 3vw, 1.5rem);
+  --text-fluid-md: clamp(1.1rem, 3.1vw, 1.3rem);
   --text-fluid-lg: clamp(1.5rem, 6vw, 3rem);
 }
 
@@ -87,6 +87,9 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
+
+  --toast: oklch(0.24 0.02 60);
+  --toast-foreground: oklch(0.96 0.01 80);
 }
 
 .dark {

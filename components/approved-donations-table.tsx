@@ -22,6 +22,7 @@ export default function ApprovedDonationsTable({
         <p className="font-bold text-xl">Message</p>
         <p className="font-bold text-xl">Amount</p>
         <p className="font-bold text-xl">Currency</p>
+        <p className="font-bold text-xl">Actions</p>
         <hr className="col-span-5 border-2 border-foreground" />
 
         {approvedDonations.map((entry) => {

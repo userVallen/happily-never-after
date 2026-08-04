@@ -15,7 +15,7 @@ export default async function Home() {
       <main className="flex flex-1 relative w-full flex-col items-center gap-10 py-8 bg-background dark:bg-black sm:gap-30">
         <div className="bg-paper relative w-full">
           <Hero />
-          <div className="flex flex-col relative text-center items-center justify-between px-8 py-5">
+          <div className="flex flex-col relative text-center items-center justify-between py-5">
             <Image
               src="/images/flower.webp"
               alt="Flower decoration"
@@ -29,7 +29,7 @@ export default async function Home() {
                 Synopsis
               </p>
 
-              <p className="relative w-[clamp(100px,20%,200px)] text-justify text-fluid-sm py-5">
+              <p className="relative w-[clamp(100px,40%,200px)] text-justify text-fluid-md py-5">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                 Praesent volutpat nisl ut auctor viverra. Curabitur vestibulum
                 dolor diam, ut accumsan dolor vulputate ac. In hac habitasse

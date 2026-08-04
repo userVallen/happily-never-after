@@ -58,19 +58,31 @@ export default function DonationActions({
   return (
     <div className="flex gap-2">
       {actions.includes('approve') && (
-        <Button type="button" onClick={handleApprove}>
+        <Button
+          type="button"
+          className="hover:brightness-90"
+          onClick={handleApprove}
+        >
           <Check />
         </Button>
       )}
 
       {actions.includes('reject') && (
-        <Button type="button" onClick={handleReject}>
+        <Button
+          type="button"
+          className="hover:brightness-90"
+          onClick={handleReject}
+        >
           <X />
         </Button>
       )}
 
       {actions.includes('delete') && (
-        <Button type="button" onClick={handleDelete}>
+        <Button
+          type="button"
+          className="hover:brightness-90"
+          onClick={handleDelete}
+        >
           <Trash2 />
         </Button>
       )}
