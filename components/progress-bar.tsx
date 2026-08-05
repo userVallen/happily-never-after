@@ -1,4 +1,7 @@
+import { motion } from 'motion/react';
+
 import { Progress } from '@/components/ui/progress';
+import { NumberTicker } from '@/components/ui/number-ticker';
 
 import { formatAmount } from '@/lib/utils';
 import { CONVERSION_RATE } from '@/lib/constants';
@@ -27,9 +30,16 @@ export default function ProgressBar({
   return (
     <div>
       <p className="text-xl font-bold">
-        {currency} {formatAmount(displayedDonationAmount)} /{' '}
-        {formatAmount(displayedGoalAmount)}
+        {currency}{' '}
+        <span>
+          <NumberTicker
+            className="text-card-foreground text-xl font-bold"
+            value={displayedDonationAmount}
+          />
+        </span>{' '}
+        / {formatAmount(displayedGoalAmount)}
       </p>
+
       <Progress className="h-5 my-1" value={progress} />
     </div>
   );
