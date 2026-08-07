@@ -28,22 +28,13 @@ export default function Synopsis() {
         <p className="font-heading text-3xl font-bold underline">Synopsis</p>
 
         <p className="w-full text-center text-fluid-md py-5">
-          After spending seven years building a life together in South Korea,
-          Chinese-Indonesian couple Jane and Noah begin to realize they&apos;re
-          no longer moving in the same direction. As Jane struggles to find her
-          voice in a language that never quite feels like her own, Noah becomes
-          increasingly rooted in the life he&apos;s built abroad. When an
-          invitation to a close friend&apos;s wedding back home begins to stir
-          questions about identity, belonging, and the future they once dreamed
-          of, they are forced to confront the quiet sacrifices that come with
-          building a life far from home.
+          {`${firstParagraph} ${secondParagraph}`}
         </p>
       </div>
 
       <motion.div
         layout
         transition={{ duration: 0.5, ease: 'easeInOut' }}
-        // className="md:hidden flex absolute w-[clamp(100px,40%,400px)] flex-col items-center top-[50%] left-[50%] transform-[translate(-50%,-50%)] z-2"
         className="md:hidden absolute inset-0 flex flex-col items-center justify-center z-2"
       >
         <motion.div className="w-[clamp(100px,40%,400px)]">
@@ -56,7 +47,7 @@ export default function Synopsis() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -8 }}
               transition={{ duration: 0.25 }}
-              className="py-5"
+              className="py-3 text-fluid-md"
             >
               {expanded ? secondParagraph : firstParagraph}
             </motion.p>
@@ -65,7 +56,7 @@ export default function Synopsis() {
           <Button
             variant="ghost"
             onClick={() => setExpanded(!expanded)}
-            className="text-sm font-heading hover:bg-transparent hover:underline active:scale-[0.9]"
+            className="text-fluid-sm font-heading hover:bg-transparent hover:underline active:scale-[0.9]"
           >
             <AnimatePresence mode="wait">
               <motion.span
