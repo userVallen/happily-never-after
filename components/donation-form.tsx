@@ -206,7 +206,9 @@ export default function DonationForm({
                   Toss <span className="font-kor">계죄번호</span>:
                   1001-7704-5687
                 </p>
-                <p className="pl-1">Jenius Account: 90200372159</p>
+                <p className="pl-1">
+                  Jenius Account (a.n. Claire Valen): 90200372159
+                </p>
               </div>
 
               <div className="h-full">
