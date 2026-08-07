@@ -1,7 +1,7 @@
 import DonationCard from '@/components/donation-card';
 import Hero from '@/components/hero';
 import Synopsis from '@/components/synopsis';
-import Logline from '@/components/logline';
+import ProjectRationale from '@/components/project-rationale';
 
 import { getCampaignService } from '@/lib/services/campaign/get';
 import { getTotalDonationsService } from '@/lib/services/donation/get';
@@ -20,7 +20,7 @@ export default async function Home() {
           </div>
         </div>
 
-        <Logline />
+        <ProjectRationale />
 
         <DonationCard campaign={campaign} totalDonations={totalDonations[0]} />
 
