@@ -48,9 +48,13 @@ const wordVariant = {
   },
 };
 
-export default function Logline() {
+export default function ProjectRationale() {
   return (
-    <motion.div className="space-y-8">
+    <motion.div className="space-y-8 text-center">
+      <p className="font-heading text-3xl font-bold underline">
+        Project Rationale
+      </p>
+
       {text.map((paragraph, index) => (
         <motion.p
           key={index}

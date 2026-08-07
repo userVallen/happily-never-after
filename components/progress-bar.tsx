@@ -1,5 +1,3 @@
-import { motion } from 'motion/react';
-
 import { Progress } from '@/components/ui/progress';
 import { NumberTicker } from '@/components/ui/number-ticker';
 

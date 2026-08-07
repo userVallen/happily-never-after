@@ -35,7 +35,7 @@ export default function Synopsis() {
       <motion.div
         layout
         transition={{ duration: 0.5, ease: 'easeInOut' }}
-        className="md:hidden absolute inset-0 flex flex-col items-center justify-center z-2"
+        className="md:hidden absolute inset-0 flex flex-col items-center justify-start pt-13 z-2"
       >
         <motion.div className="w-[clamp(100px,40%,400px)]">
           <p className="font-heading text-3xl font-bold underline">Synopsis</p>
