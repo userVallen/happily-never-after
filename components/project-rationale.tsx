@@ -2,6 +2,8 @@
 
 import { motion } from 'motion/react';
 
+import { staggerContainer, blurFade } from '@/lib/motion/variants';
+
 const text = [
   [
     {
@@ -27,27 +29,6 @@ const text = [
   ],
 ];
 
-const containerVariant = {
-  hidden: {},
-  visible: {
-    transition: {
-      staggerChildren: 0.05,
-    },
-  },
-};
-
-const wordVariant = {
-  hidden: {
-    opacity: 0,
-    filter: 'blur(2px)',
-  },
-  visible: {
-    opacity: 1,
-    filter: 'blur(0px)',
-    transition: { duration: 0.3 },
-  },
-};
-
 export default function ProjectRationale() {
   return (
     <motion.div className="space-y-8 text-center">
@@ -58,7 +39,7 @@ export default function ProjectRationale() {
       {text.map((paragraph, index) => (
         <motion.p
           key={index}
-          variants={containerVariant}
+          variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
@@ -68,7 +49,7 @@ export default function ProjectRationale() {
             segment.text.split(' ').map((word, j) => (
               <motion.span
                 key={`${i}-${j}`}
-                variants={wordVariant}
+                variants={blurFade}
                 className={`inline-block mr-1 ${segment.fontStyle}`}
               >
                 {word}
