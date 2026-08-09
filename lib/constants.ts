@@ -3,4 +3,4 @@ export const PRESET_AMOUNTS = {
   IDR: [150000, 300000, 500000, 1000000],
 } as const;
 
-export const CONVERSION_RATE = 12.5;
+export const CONVERSION_RATE = 12.8;
