@@ -10,8 +10,7 @@ import { authenticateAdmin } from '@/lib/auth/authenticate-admin';
 
 import { Card, CardContent } from '@/components/ui/card';
 import ProgressBar from '@/components/progress-bar';
-import PendingDonationsTable from '@/components/pending-donations-table';
-import ApprovedDonationsTable from '@/components/approved-donations-table';
+import DonationsTable from '@/components/donations-table';
 
 export default async function AdminPage() {
   const auth = await authenticateAdmin();
@@ -37,8 +36,8 @@ export default async function AdminPage() {
         </CardContent>
       </Card>
 
-      <PendingDonationsTable pendingDonations={pendingDonations} />
-      <ApprovedDonationsTable approvedDonations={approvedDonations} />
+      <DonationsTable type="pending" donations={pendingDonations} />
+      <DonationsTable type="approved" donations={approvedDonations} />
     </main>
   );
 }

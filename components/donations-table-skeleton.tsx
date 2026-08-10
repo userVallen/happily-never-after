@@ -1,10 +1,16 @@
 import { Skeleton } from '@/components/ui/skeleton';
 import { Card, CardHeader, CardContent } from '@/components/ui/card';
 
-export default function PendingDonationsTableSkeleton() {
+import { capitalizeFirstLetter } from '@/lib/utils';
+
+type DonationsTableSkeletonProps = { type: string };
+
+export default function DonationsTableSkeleton({
+  type,
+}: DonationsTableSkeletonProps) {
   return (
     <div className="flex flex-col gap-4">
-      <p className="font-heading font-bold text-4xl">Pending Donations</p>
+      <p className="font-heading font-bold text-4xl">{`${capitalizeFirstLetter(type)} Donations`}</p>
 
       <div className="hidden md:grid grid-cols-[3fr_5fr_2fr_1fr_1fr] gap-y-2 items-center">
         <p className="font-bold text-xl">Name</p>

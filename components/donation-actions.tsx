@@ -56,7 +56,7 @@ export default function DonationActions({
   };
 
   return (
-    <div className="flex gap-2">
+    <div className="flex flex-1 gap-2">
       {actions.includes('approve') && (
         <Button
           type="button"

@@ -1,7 +1,6 @@
 import { Card, CardContent } from '@/components/ui/card';
 import ProgressBarSkeleton from '@/components/progress-bar-skeleton';
-import PendingDonationsTableSkeleton from '@/components/pending-donations-table-skeleton';
-import ApprovedDonationsTableSkeleton from '@/components/approved-donations-table-skeleton';
+import DonationsTableSkeleton from '@/components/donations-table-skeleton';
 
 export default function Loading() {
   return (
@@ -12,8 +11,8 @@ export default function Loading() {
         </CardContent>
       </Card>
 
-      <PendingDonationsTableSkeleton />
-      <ApprovedDonationsTableSkeleton />
+      <DonationsTableSkeleton type="pending" />
+      <DonationsTableSkeleton type="approved" />
     </main>
   );
 }
