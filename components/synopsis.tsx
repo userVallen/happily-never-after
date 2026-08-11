@@ -22,6 +22,7 @@ export default function Synopsis() {
         width={267}
         height={642}
         className="z-1 w-[clamp(100px,50%,267px)] md:w-[267px]"
+        priority
       />
 
       <div className="hidden md:flex absolute w-[clamp(100px,40%,400px)] flex-col items-center top-[50%] left-[50%] transform-[translate(-50%,-50%)]">
@@ -79,6 +80,7 @@ export default function Synopsis() {
         width={267}
         height={642}
         className="z-1 w-[clamp(100px,50%,267px)] md:w-[267px]"
+        priority
       />
     </div>
   );
