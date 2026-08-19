@@ -75,8 +75,8 @@ A modern, full-stack donation platform built for _Happily Never After_. It allow
    ```
 
 3. Set up environment variables:
-   - Create a .env.local file in the root directory and add your Supabase credentials:
-        ```
+   - Create a `.env.local` file in the root directory and add your Supabase credentials:
+        ```env
         NEXT_PUBLIC_SUPABASE_URL=your_supabase_project_url
         NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=your_supabase_publishable_key
         SUPABASE_SECRET_KEY=your_supabase_secret_key
@@ -86,6 +86,7 @@ A modern, full-stack donation platform built for _Happily Never After_. It allow
         ```
         ADMIN_EMAIL=your_admin_email
         ```
+        Note: Make sure you use the same email as the one you've set up in your project's Supabase Auth.
 
 4. Start the development server:
    ```bash
