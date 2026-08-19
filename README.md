@@ -1,36 +1,102 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Happily Never After
+
+A modern, full-stack donation platform built for _Happily Never After_. It allows supporters to contribute, view live messages, and enables administrator to verify transactions securely through an authenticated dashboard.
+
+[![Live Demo](https://img.shields.io/badge/Live-Demo-brightgreen?style=flat-square&logo=vercel)](https://happily-never-after.vercel.app/)
+
+## Features
+
+- **Supporter Contributions & Real-Time Messaging:** Secure donation submission flow paired with dynamic message feeds.
+- **Admin Verification Workflows:** Protected dashboard routes allowing admins to verify, approve, or reject incoming donations.
+- **End-to-End Type Safety:** Strict validation across client inputs and database schemas using TypeScript and Zod.
+- **Fluid UI & Micro-Interactions:** Polished layout transitions and animations powered by Motion (Framer Motion).
+- **Responsive Design:** Fully adaptive layout optimized for mobile and desktop screens.
+
+## Tech Stack
+
+| Category | Technology |
+| :--- | :--- |
+| **Framework** | Next.js (App Router, Server Actions) |
+| **Language** | TypeScript |
+| **Styling & UI** | Tailwind CSS, ShadCN UI, Motion (Framer Motion) |
+| **Form Handling** | React Hook Form |
+| **Validation** | Zod |
+| **Database & Auth** | Supabase (PostgreSQL) |
+| **Deployment** | Vercel |
+
+## Architecture & Highlights
+
+- **Server Actions over API Routes:** Utilized Next.js Server Actions to handle mutations securely on the server side, eliminating boilerplate API route files.
+- **Data Validation:** Implemented **Zod schemas** shared across form inputs and database operations to guarantee type safety and prevent malformed payloads.
+- **Database Security:** Configured **Supabase Row-Level Security (RLS)** policies to ensure only authorized administrators can access verification workflows.
+
+## Project Structure
+
+```
+.
+├── app/
+│   ├── actions/            # Server actions
+│   ├── admin/              # Protected admin page
+│   ├── fonts/              # External fonts
+│   ├── layout.tsx          # Root layout
+│   ├── login/              # Login page (using Supabase Auth)
+│   └── page.tsx            # Landing page
+├── components/
+│   └── ui/                 # ShadCN components
+├── lib/
+│   ├── auth/               # Authentication helpers
+│   ├── constants.ts        # App-wide constants
+│   ├── motion/             # Framer Motion variants
+│   ├── services/           # DB operation services
+│   │   ├── campaign/
+│   │   └── donation/
+│   ├── supabase/           # Supabase client and type definitions
+│   ├── utils.ts            # General helper functions
+│   └── validation/         # Zod validation schemas
+├── public/                 # Static assets
+└── supabase/
+    ├── migrations/         # Supabase DB migrations
+    └── seed.sql            # Supabase DB seed data
+```
 
 ## Getting Started
 
-First, run the development server:
+### Local Setup
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/userVallen/happily-never-after.git
+   cd happily-never-after
+   ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Install dependencies:
+   ```bash
+   pnpm i
+   ```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. Set up environment variables:
+   - Create a .env.local file in the root directory and add your Supabase credentials:
+        ```
+        NEXT_PUBLIC_SUPABASE_URL=your_supabase_project_url
+        NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=your_supabase_publishable_key
+        SUPABASE_SECRET_KEY=your_supabase_secret_key
+        SUPABASE_JWKS_URL=your_supabase_jwks_url
+        ```
+        Also add the admin email:
+        ```
+        ADMIN_EMAIL=your_admin_email
+        ```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+4. Start the development server:
+   ```bash
+   pnpm dev
+   ```
 
-## Learn More
+5. Open your browser and navigate to:
+   ```
+   http://localhost:3000
+   ```
 
-To learn more about Next.js, take a look at the following resources:
+## License
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Created by Vallen Nathaniel as a portfolio project.
